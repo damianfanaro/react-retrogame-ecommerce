@@ -18,13 +18,15 @@ const GenreList = ({ onSelectGenre, selectedGenre }: Props) => {
         <List>
             {data.map((genre) => (
                 <ListItem key={genre.id}>
-                    <HStack paddingY="5px">
+                    <HStack paddingY="10px" paddingX="2px">
                         <Image boxSize="32px" borderRadius={8} src={getCroppedImageUrl(genre.image_background)} />
                         <Button
                             fontWeight={genre.id === selectedGenre?.id ? "bold" : "normal"}
+                            colorScheme={genre.id === selectedGenre?.id ? "whatsapp" : "normal"}
                             fontSize="lg"
                             variant="link"
                             onClick={() => onSelectGenre(genre)}
+                            noOfLines={[1, 2]}
                         >
                             {genre.name}
                         </Button>
