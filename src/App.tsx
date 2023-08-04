@@ -6,12 +6,10 @@ import GenreList from "./components/GenreList";
 import PlatformSelector from "./components/PlatformSelector";
 import SortSelector from "./components/SortSelector";
 import GameHeading from "./components/GameHeading";
-import Genre from "./entities/Genre";
-import Platform from "./entities/Platform";
 
 export interface GameQuery {
-    genre: Genre | null;
-    platform: Platform | null;
+    genreId?: number;
+    platformId?: number;
     sortOder: string;
     searchText: string;
     pageSize: number;
@@ -30,7 +28,7 @@ function App() {
             </GridItem>
             <Show above="lg">
                 <GridItem area="aside" paddingX={5}>
-                    <GenreList selectedGenre={gameQuery.genre} onSelectGenre={(genre) => setGameQuery({ ...gameQuery, genre })} />
+                    <GenreList selectedGenreId={gameQuery.genreId} onSelectGenre={(genre) => setGameQuery({ ...gameQuery, genreId: genre.id })} />
                 </GridItem>
             </Show>
             <GridItem area="main">
@@ -39,8 +37,8 @@ function App() {
                     <Flex>
                         <Box marginRight={5}>
                             <PlatformSelector
-                                selectedPlatform={gameQuery.platform}
-                                onSelectPlatform={(platform) => setGameQuery({ ...gameQuery, platform })}
+                                selectedPlatformId={gameQuery.platformId}
+                                onSelectPlatform={(platform) => setGameQuery({ ...gameQuery, platformId: platform.id })}
                             />
                         </Box>
                         <SortSelector sortOrder={gameQuery.sortOder} onSelectSortOrder={(sortOder) => setGameQuery({ ...gameQuery, sortOder })} />
