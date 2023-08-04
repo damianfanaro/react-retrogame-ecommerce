@@ -10,7 +10,12 @@ const useGenres = () =>
         queryKey: CACHE_KEY_GENRES,
         queryFn: apiClient.getAll,
         staleTime: TWENTY_FOUR_HOURS_MS,
-        initialData: { count: GENRES.length, results: GENRES },
+        initialData: GENRES,
     });
+
+export const useFindGenres = (id?: number) => {
+    const { data: genres } = useGenres();
+    return genres?.results.find((p) => p.id === id);
+};
 
 export default useGenres;

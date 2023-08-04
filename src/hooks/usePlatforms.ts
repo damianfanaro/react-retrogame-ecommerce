@@ -10,7 +10,12 @@ const usePlatforms = () =>
         queryKey: CACHE_KEY_PLATFORMS,
         queryFn: apiClient.getAll,
         staleTime: TWENTY_FOUR_HOURS_MS,
-        initialData: { count: PLATFORMS.length, results: PLATFORMS },
+        initialData: PLATFORMS,
     });
+
+export const useFindPlatform = (id?: number) => {
+    const { data: platforms } = usePlatforms();
+    return platforms?.results.find((p) => p.id === id);
+};
 
 export default usePlatforms;
