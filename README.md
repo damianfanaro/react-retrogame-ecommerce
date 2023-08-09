@@ -29,4 +29,4 @@ If you are developing a production application, we recommend updating the config
 # Principios de diseño
 
 -   Los componentes de React deben preocuparse por renderizar partes de la UI y manejar su estado.
--
+-   https://react-retrogame-ecommerce.vercel.app/
